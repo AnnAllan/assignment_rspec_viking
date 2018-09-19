@@ -19,11 +19,6 @@ class Viking
     target.receive_attack(damage_dealt)
   end
 
-  def receive_attack(damage_dealt)
-    take_damage(damage_dealt)
-    puts "#{name} took #{damage_dealt} damage and has #{health} health..."
-  end
-
   def pick_up_weapon(weapon)
     raise "Can't pick up that thing" unless weapon.is_a?(Weapon)
     @weapon = weapon
@@ -34,6 +29,11 @@ class Viking
   end
 
   private
+  def receive_attack(damage_dealt)
+    take_damage(damage_dealt)
+    puts "#{name} took #{damage_dealt} damage and has #{health} health..."
+  end
+
   def damage_dealt
     if @weapon
       damage_with_weapon
@@ -64,6 +64,9 @@ class Viking
   def check_death
     raise "#{self.name} has Died..." if @health <= 0
   end
+
+  private
+
 
 end
 
